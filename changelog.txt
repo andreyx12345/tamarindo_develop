@@ -1,0 +1,176 @@
+01 March 17
+
+- Fixed plus/minus buttons on calendar
+
+Files changed:
+
+css/jquery-ui.theme.css
+js/search.js
+
+-----------------------------------------------
+
+21 Februar 17
+
+- Added touch support to calendar
+
+Files changed:
+
+index.html
+destination-micro.html
+destination-single.html
+search-results.html
+tailor-made.html
+css/jquery-ui.theme.css
+css/style.css
+css/style-rtl.css
+js/search.js
+
+Files added:
+
+js/jquery-ui-sliderAccess.js
+
+-----------------------------------------------
+
+26 August 16
+
+- Fixed extra items table responsiveness
+
+Files changed:
+
+booking-step1.html
+css/style.css
+css/style-rtl.css
+
+Files removed:
+css/responsive-tables.css
+js/responsive-tables.js
+
+-----------------------------------------------
+
+08 August 16
+
+- Updated jQuery
+- Updated all plugins
+- Added 2300+ custom font icons
+- Added font Awesome
+- Fixed scrolling on home page
+- Removed /js/jquery.datetimepicker.js and replaced it with jQuery datepicker + time addon
+
+Files changed:
+
+css/style.css
+css/style-rtl.css
+css/theme-beige.css
+css/theme-dblue.css
+css/theme-dgreen.css
+css/theme-grey.css
+css/theme-lblue.css
+css/theme-lgreen.css
+css/theme-lime.css
+css/theme-orange.css
+css/theme-peach.css
+css/theme-pink.css
+css/theme-purple.css
+css/theme-red.css
+css/theme-teal.css
+css/theme-turqoise.css
+css/theme-yellow.css
+js/jquery.min.js
+js/jquery.slicknav.min.js
+js/jquery.uniform.min.js
+js/scripts.js
+js/wow.min.js
+*all html files
+
+Files added:
+
+css/icons.css
+css/jquery-ui.theme.css
+css/images/
+fonts/
+fonts/fonts/themeenergy.eot
+fonts/font-preview
+
+Files removed:
+
+images/icons.png
+images/icons-beige.png
+images/icons-dblue.png
+images/icons-dgreen.png
+images/icons-grey.png
+images/icons-lblue.png
+images/icons-lgreen.png
+images/icons-lime.png
+images/icons-orange.png
+images/icons-peach.png
+images/icons-pink.png
+images/icons-purple.png
+images/icons-red.png
+images/icons-teal.png
+images/icons-turqoise.png
+images/icons-yellow.png
+js/jquery.datetimepicker.js
+
+-----------------------------------------------
+
+3 November 15
+
+- Updated slicknav plugin
+- Fixed some minor css issues on mobile
+- Placed "Find a transfer" button as last on mobile
+
+Files changed:
+
+js/jquery.slicknav.min.js
+css/style.css
+css/style-rtl.css
+index.html
+destinations-single.html
+destinations-micro.html
+search-results.html
+
+-----------------------------------------------
+
+2 June 15
+
+- Fixed contact form map scroll issue on mobile
+- Added responsive-tables.js to booking step 1 page
+- Added tab functionality to services page
+- Added my account page
+
+Files changed:
+
+css/style.css
+css/style-rtl.css
+booking-step1.html
+services.html
+
+Files added:
+
+css/responsive-tables.css
+js/responsive-tables.js
+account.html
+
+-----------------------------------------------
+
+7 April 15
+
+- updated plugins
+- added RTL support
+
+Files changed:
+
+css/style.css
+js/jquery.datetimepicker.js
+js/jquery.min.js
+js/jquery.slicknav.min.js
+js/jquery.uniform.min.js
+
+Files added:
+
+css/style-rtl.css
+
+-----------------------------------------------
+
+20 November 14
+Official release
