@@ -185,10 +185,10 @@
 					<!-- //Widget -->
 					
 					<!-- Widget -->
-					<div class="widget">
+					<!--<div class="widget">
 						<h4>Advertisment</h4>
 						<a href="#"><img src="images/uploads/advertisment.jpg" alt="" /></a>
-					</div>
+					</div>-->
 					<!-- //Widget -->
 				</aside>
 				<!--- //Sidebar -->
@@ -255,14 +255,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="js/jquery.uniform.min.js"></script>
 	<script src="js/jquery.slicknav.min.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDinMsw48uK0IRIQa9uZ4cJhub5ukaSgMo&callback=initialize">
+    </script>
 	<script src="js/infobox.js"></script>
 	<script src="js/wow.min.js"></script>
 	<script src="js/scripts.js"></script>
 	
 	<script type="text/javascript">
 		function initialize() {
-			var secheltLoc = new google.maps.LatLng(49.47216, -123.76307);
+			var secheltLoc = new google.maps.LatLng(10.299275, -85.837106);
 
 			var myMapOptions = {
 				 zoom: 15
@@ -270,40 +272,13 @@
 				,mapTypeId: google.maps.MapTypeId.ROADMAP
 				,scrollwheel: false
 			};
-			var theMap = new google.maps.Map(document.getElementById("map_canvas"), myMapOptions);
-
-			var myIcon = new google.maps.MarkerImage('');
-			
+			var theMap = new google.maps.Map(document.getElementById("map_canvas"), myMapOptions);			
 			var marker = new google.maps.Marker({
 				map: theMap,
-				draggable: true,
-				position: new google.maps.LatLng(49.47216, -123.76307),
-				visible: true,
-				icon: myIcon
-			});
-
-			var boxText = document.createElement("div");
-			boxText.innerHTML = "<span>TRANSFERS</span><br>1293 Delancey Street, NY";
-
-			var myOptions = {
-				 content: boxText
-				,disableAutoPan: false
-				,maxWidth: 0
-				,pixelOffset: new google.maps.Size(-140, 0)
-				,zIndex: null
-				,closeBoxURL: ""
-				,infoBoxClearance: new google.maps.Size(1, 1)
-				,isHidden: false
-				,enableEventPropagation: false
-			};
-
-			google.maps.event.addListener(marker, "click", function (e) {
-				ib.open(theMap, this);
-			});
-
-			var ib = new InfoBox(myOptions);
-
-			ib.open(theMap, marker);
+				position: new google.maps.LatLng(10.299275, -85.837106),
+				visible: true
+				});
+			
 		}
 	</script>
   </body>
