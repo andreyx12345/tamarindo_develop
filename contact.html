@@ -147,26 +147,26 @@
 				
 				<!-- Form -->
 				<div class="three-fourth">
-					<form method="post" action="contact_form_message.php" name="contactform" id="contactform">
+					<form method="post"  onsubmit="return false;" name="contactform" id="contactform">
 						<div id="message"></div>
 						<div class="f-row">
 							<div class="one-half">
 								<label for="name">Name and surname</label>
-								<input type="text" id="name" />
+								<input required="" type="text" id="name" name="name"/>
 							</div>
 							<div class="one-half">
 								<label for="email">Email address</label>
-								<input type="email" id="email" />
+								<input required="" type="email" id="email" name="email"/>
 							</div>
 						</div>
 						<div class="f-row">
 							<div class="full-width">
 								<label for="comments">Message</label>
-								<textarea id="comments"></textarea>
+								<textarea required="" id="comments" name="message"></textarea>
 							</div>
 						</div>
 						<div class="f-row">
-							<input type="submit" value="Submit" id="submit" name="submit" class="btn color medium right" />
+							<input type="button" value="Submit" onclick="sendEmail()" id="submit" name="submit" class="btn color medium right" />
 						</div>
 					</form>
 				</div>
@@ -263,7 +263,9 @@
 	<script src="js/scripts.js"></script>
 	
 	<script type="text/javascript">
+		
 		function initialize() {
+			
 			var secheltLoc = new google.maps.LatLng(10.299275, -85.837106);
 
 			var myMapOptions = {
@@ -280,6 +282,53 @@
 				});
 			
 		}
+		function validarCorreo () {
+			    // Expresion regular para validar el correo
+			    var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+
+			    // Se utiliza la funcion test() nativa de JavaScript
+			    if (regex.test($('#email').val().trim())) {
+			        
+			        return true;
+			    } else {
+			        return false;
+			    }
+	   }
+		function sendEmail() {
+				
+		var nombre = document.getElementById("name").value;
+		var correo = document.getElementById("email").value;
+		var mensaje = document.getElementById("comments").value;
+		var mensajeContacto = $("#message");
+            
+
+		if (nombre == "" || correo == "" || mensaje == "") {
+			mensajeContacto.addClass("error_message");
+			mensajeContacto.removeClass("success_message");
+				mensajeContacto.text("Debe completar todos los campos del formulario.");
+				mensajeContacto.show();
+		} else if (!validarCorreo()) {
+			mensajeContacto.addClass("error_message");
+			mensajeContacto.removeClass("success_message");
+			mensajeContacto.text("El formato del correo no es correcto.");
+			mensajeContacto.show();	
+
+		    } else {
+		    	// emailjs.send("andreyx12345_gmail_com","template_578IyTse",{name: nombre, email: correo, message: mensaje});
+				
+				 $.ajax({
+					url: "https://formspree.io/abdiel.chaverri@gmail.com", 
+					method: "POST",
+					data: {message: mensaje,name:nombre,email:correo},
+					dataType: "json"
+				 });
+				 mensajeContacto.addClass("success_message");
+				 mensajeContacto.removeClass("error_message");
+				 mensajeContacto.text("Envio del correo exitoso.");
+				 mensajeContacto.show();
+				 return false;
+		    }
+			}
 	</script>
   </body>
 </html>
