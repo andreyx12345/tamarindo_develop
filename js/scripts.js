@@ -1,11 +1,101 @@
 (function($){
 
 	"use strict";
-	  
+
 	$(document).ready(function () {
+		$("#popup").hide();
 		transfers.init();
 	});
-	
+
+	var validateEmail = function (email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(email);
+	}
+
+	var validateInfo = function (depDate, pickUp, dropOff, email, isReturn, returnDate, returnPickUp, returnDropOff) {
+
+		  var isValid = true
+
+		 if (depDate.length == 0 || depDate == null || /^\s+$/.test(depDate)) {
+			 isValid = false
+		 }
+		if (pickUp.length == 0 || pickUp == null || /^\s+$/.test(pickUp)) {
+			isValid = false
+		}
+		if (dropOff.length == 0 || dropOff == null || /^\s+$/.test(dropOff)) {
+			isValid = false
+		}
+		if (!validateEmail(email)) {
+			isValid = false
+		}
+
+		if (isReturn === true) {
+
+			if (returnDate.length == 0 || returnDate == null || /^\s+$/.test(returnDate)) {
+				isValid = false
+			}
+			if (returnPickUp.length == 0 || returnPickUp == null || /^\s+$/.test(returnPickUp)) {
+				isValid = false
+			}
+			if (returnDropOff.length == 0 || returnDropOff == null || /^\s+$/.test(returnDropOff)) {
+				isValid = false
+			}
+		}
+
+		 return isValid
+	}
+
+	var showModal = function (message, title) {
+
+		$('#myModal').modal()
+		var mymodal = $('#myModal');
+		mymodal.find('.modal-body').text(message);
+		mymodal.find('.modal-title').text(title);
+		mymodal.modal('show');
+	}
+
+	var sendEmail = function () {
+
+		var popup = $("#popup");
+		popup.show();
+
+		// Vars message
+		var depDate = $("#dep-date").val();
+		var pickUp = $("#pickUp-location").val();
+		var dropOff = $("#dropOff-location").val();
+		var email = $("#email-booking").val();
+		var isReturn = $("#return").is(":checked");
+		var returnDate = $("#ret-date").val();
+		var returnPickUp = $("#return-pickUp-location").val();
+		var returnDropOff = $("#return-dropOff-location").val();
+
+		if (validateInfo(depDate, pickUp, dropOff, email, isReturn, returnDate, returnPickUp, returnDropOff)) {
+
+			if (isReturn === false) {
+				isReturn = "No especifica"
+			}
+
+			$.ajax({
+				url: "https://formspree.io/abdiel.chaverri@gmail.com",
+				method: "POST",
+				data: {subject: "Booking", depDat: depDate, pickUp: pickUp, dropOff: dropOff, email:email, isReturn: isReturn, returnDate: returnDate, returnPickUp: returnPickUp, returnDropOff: returnDropOff},
+				dataType: "json",
+				success: function(data) {
+					popup.hide()
+					showModal('¡Solicitud enviada de forma exitosa!','Envío');
+				},
+				error: function (error) {
+					popup.hide()
+					showModal('Problemas al realizar el envío de la información.','Error');
+					console.log(error);
+				}
+			});
+		} else {
+			popup.hide();
+			showModal('Debe completar todos los campos de forma correcta para hacer la reservación.', 'Requerido');
+		}
+	}
+
 	$(window).on('load', function() {
 		transfers.load();
 	});
@@ -16,14 +106,18 @@
 	var transfers = {
 	
 		init: function () {
-			
+
 			// MOBILE MENU
 			$('.main-nav').slicknav({
 				prependTo:'.header .wrap',
 				allowParentLinks: true,
 				label:''
 			});
-			
+
+			$('#sendBooking').click(function () {
+				sendEmail();
+			});
+
 			// CUSTOM FORM ELEMENTS
 			$('input[type=radio], input[type=checkbox],input[type=number], select').uniform();
 			
