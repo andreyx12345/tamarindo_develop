@@ -181,17 +181,17 @@
 				var href = $.attr(this, 'href');
 				if (typeof ($(href)) != 'undefined' && $(href).length > 0) {
 					var anchor = '';
-					
+
 					if(href.indexOf("#") != -1) {
 						anchor = href.substring(href.lastIndexOf("#"));
 					}
-					
+
 					var scrollToPosition = $(anchor).offset().top - 80;
-						
+
 					if (anchor.length > 0) {
 						$root.animate({
 							scrollTop: scrollToPosition
-						}, 500, function () {
+						}, 1000, function () {
 							window.location.hash = anchor;
 							// This hash change will jump the page to the top of the div with the same id
 							// so we need to force the page to back to the end of the animation
