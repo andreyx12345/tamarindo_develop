@@ -59,6 +59,10 @@ nav li:before 		{display:none;}
 
 p {padding:0 0 17px;}
 
+.carousel-indicators > li {
+    list-style-type: none;
+}
+
 a 					{text-decoration:none;-webkit-transition:all 0.2s ease-in;-moz-transition:all 0.2s ease-in;-o-transition:all 0.2s ease-in;-ms-transition:all 0.2s ease-in;transition:all 0.2s ease-in;}
 a:active,a:hover 	{outline: 0;}
 
