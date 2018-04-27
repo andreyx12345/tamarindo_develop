@@ -76,23 +76,23 @@
 			}
 
 			$.ajax({
-				url: "https://formspree.io/abdiel.chaverri@gmail.com",
+				url: "https://formspree.io/andreyx12@hotmail.com",
 				method: "POST",
 				data: {subject: "Booking", depDat: depDate, pickUp: pickUp, dropOff: dropOff, email:email, isReturn: isReturn, returnDate: returnDate, returnPickUp: returnPickUp, returnDropOff: returnDropOff},
 				dataType: "json",
 				success: function(data) {
 					popup.hide()
-					showModal('¡Solicitud enviada de forma exitosa!','Envío');
+					showModal('Request sent successfully','Sent');
 				},
 				error: function (error) {
 					popup.hide()
-					showModal('Problemas al realizar el envío de la información.','Error');
+					showModal('There was an error to send the information.','Error');
 					console.log(error);
 				}
 			});
 		} else {
 			popup.hide();
-			showModal('Debe completar todos los campos de forma correcta para hacer la reservación.', 'Requerido');
+			showModal('You must complete all fields correctly to make the reservation. ', 'Required');
 		}
 	}
 

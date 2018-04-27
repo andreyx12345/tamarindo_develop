@@ -250,26 +250,26 @@
 		if (nombre == "" || correo == "" || mensaje == "") {
 			mensajeContacto.addClass("error_message");
 			mensajeContacto.removeClass("success_message");
-				mensajeContacto.text("Debe completar todos los campos del formulario.");
+				mensajeContacto.text("You must complete the form data");
 				mensajeContacto.show();
 		} else if (!validarCorreo()) {
 			mensajeContacto.addClass("error_message");
 			mensajeContacto.removeClass("success_message");
-			mensajeContacto.text("El formato del correo no es correcto.");
+			mensajeContacto.text("Email wrong");
 			mensajeContacto.show();
 
 		    } else {
 		    	// emailjs.send("andreyx12345_gmail_com","template_578IyTse",{name: nombre, email: correo, message: mensaje});
 				
 				 $.ajax({
-					url: "https://formspree.io/abdiel.chaverri@gmail.com", 
+					url: "https://formspree.io/andreyx12@hotmail.com", 
 					method: "POST",
 					data: {message: mensaje,name:nombre,email:correo},
 					dataType: "json"
 				 });
 				 mensajeContacto.addClass("success_message");
 				 mensajeContacto.removeClass("error_message");
-				 mensajeContacto.text("Envio del correo exitoso.");
+				 mensajeContacto.text("Email sent successfully");
 				 mensajeContacto.show();
 				 return false;
 		    }

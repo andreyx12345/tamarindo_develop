@@ -600,7 +600,7 @@ input[type="file"] {border:1px solid #DFDFD0;-webkit-border-radius:3px;-moz-bord
 
 .one-sixth label {white-space:nowrap;}
 
-.error_message 	{background:#de2222;color:#fff;padding:15px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-transform:uppercase;margin:0 0 15px;}
+.error_message 	{background:#858585;color:#fff;padding:15px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-transform:uppercase;margin:0 0 15px;}
 #message h6		{padding-bottom:10px;color:#191f26;}
 #message p 		{padding:0;}
 .success_message 	{background:#32CD32;color:#fff;padding:15px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;text-transform:uppercase;margin:0 0 15px;}
